@@ -1,0 +1,35 @@
+<p>Dear Team,</p>
+<p>New batch has been submitted on {0}</p>
+<p>Here you can find Batch Details...</p>
+<table style="border: 3px solid black">
+    <tbody>
+        <tr>
+            <th>Batch Code</th>
+            <td>{1}</td>
+        </tr>
+        <tr>
+            <th>Max Version</th>
+            <td>{2}</td>
+        </tr>
+        <tr>
+            <th>Min Version</th>
+            <td>{3}</td>
+        </tr>
+        <tr>
+            <th>Batch Run Date</th>
+            <td>{4}</td>
+        </tr>
+        <tr>
+            <th>Order Type</th>
+            <td>{5}</td>
+        </tr>
+        <tr>
+            <th>Transaction Number</th>
+            <td>{6}</td>
+        </tr>
+    </tbody>
+</table>
+<p>Thanks,</p>
+<p>Intelligent Bot</p>
+<p>www.BotsDNA.com</p>
+
