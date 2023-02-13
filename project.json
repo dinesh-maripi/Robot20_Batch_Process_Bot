@@ -1,5 +1,5 @@
 {
-  "name": "Batch_Process_Bot",
+  "name": "Robot20_Batch_Process_Bot",
   "description": "Batch process bot",
   "main": "Main.xaml",
   "dependencies": {
