@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="746,5273" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="696,5189" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="40">
       <x:String>System.Activities</x:String>
@@ -44,7 +44,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="52">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="104">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -96,6 +96,8 @@
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -104,87 +106,32 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Sequence: Main" sap:VirtualizedContainerService.HintSize="625,5208" sap2010:WorkflowViewState.IdRef="Sequence_3">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="sd:DataTable" Name="dt_Config" />
-    </Sequence.Variables>
+  <Sequence DisplayName="Sequence: Main" sap:VirtualizedContainerService.HintSize="706,4416" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="583,70" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign sap:VirtualizedContainerService.HintSize="664,82" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
-        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[GlobalVariablesNamespace.GlobalVariables.Config]</OutArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[Config]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[New Dictionary(Of String, Object)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ReadRange AddHeaders="True" DataTable="[dt_Config]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="583,97" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Settings" WorkbookPath="Data\Config.xlsx">
-      <ui:ReadRange.Range>
-        <InArgument x:TypeArguments="x:String">
-          <Literal x:TypeArguments="x:String" Value="" />
-        </InArgument>
-      </ui:ReadRange.Range>
-    </ui:ReadRange>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_Config]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="583,638" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
-      <ui:ForEachRow.Body>
-        <ActivityAction x:TypeArguments="sd:DataRow">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524,513" sap2010:WorkflowViewState.IdRef="Sequence_7">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[Not String.IsNullOrWhiteSpace(CurrentRow(&quot;Name&quot;).ToString.Trim)]" DisplayName="If: Current row is not empty" sap:VirtualizedContainerService.HintSize="482,423" sap2010:WorkflowViewState.IdRef="If_3">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="400,160" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Assign: Config Key/Val pair" sap:VirtualizedContainerService.HintSize="358,70" sap2010:WorkflowViewState.IdRef="Assign_4">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Object">[Config(CurrentRow("Name").ToString.Trim)]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Object">[CurrentRow("Value").ToString.Trim]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                </Sequence>
-              </If.Then>
-              <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="400,81" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </Sequence>
-              </If.Else>
-            </If>
-          </Sequence>
-        </ActivityAction>
-      </ui:ForEachRow.Body>
-    </ui:ForEachRow>
-    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="IfOpenedByAppBrowser" DisplayName="Use Browser Edge: https://botsdna.com/BatchProcess/" sap:VirtualizedContainerService.HintSize="583,4193" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V2" WindowResize="Maximize">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Get_Config_Dict workflow" sap:VirtualizedContainerService.HintSize="664,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Get_Config_Dict.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="IfOpenedByAppBrowser" DisplayName="Use Browser Edge: https://botsdna.com/BatchProcess/" sap:VirtualizedContainerService.HintSize="664,4053" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="549,3967" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="630,3836" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dt_BatchInfo" />
             </Sequence.Variables>
@@ -193,23 +140,23 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[dt_BatchInfo]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Column-0' ReferenceName='Column-0' ReferenceIdx='0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Column-0' attr='text' /&gt;&lt;/extract-table&gt;" ExtractSimilar="True" sap:VirtualizedContainerService.HintSize="507,166" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="Rows" MaximumResults="0" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V1">
+            <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[dt_BatchInfo]" DisplayName="Extract Table Data: dt_BatchInfo" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Column-0' ReferenceName='Column-0' ReferenceIdx='0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Column-0' attr='text' /&gt;&lt;/extract-table&gt;" ExtractSimilar="True" sap:VirtualizedContainerService.HintSize="588,157" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="Rows" MaximumResults="0" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V1">
               <uix:NExtractData.Target>
                 <uix:TargetAnchorable DesignTimeRectangle="371, 343, 696, 2654" FriendlyName="'[BATCH 13.9'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;" Guid="b9e71fb0-846f-45d2-9879-ea7edcd0c0de" InformativeScreenshot="303d1f650a9aa438fc9035a4a48ef78e.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='https://botsdna.com/BatchProcess/' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
               </uix:NExtractData.Target>
             </uix:NExtractData>
-            <uix:NClick ClickType="Single" DisplayName="Click: Submit Batch" sap:VirtualizedContainerService.HintSize="507,166" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V1">
+            <uix:NClick ClickType="Single" DisplayName="Click: Submit Batch" sap:VirtualizedContainerService.HintSize="588,157" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V1">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://botsdna.com/BatchProcess/" DesignTimeRectangle="757, 325, 88, 17" ElementType="Text" FriendlyName="'Submit Batch'" FullSelectorArgument="&lt;webctrl aaname='Submit Batch' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Submit Batch' tag='A' type='' class='' check:innerText='Submit Batch' /&gt;" Guid="0f8ca15b-4803-4890-9d67-a2b6d159596c" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFwAAAAVCAYAAADLuIn8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJVSURBVFhH7ZU9bsMwDIV7jt6rV8glcoQO3gPPBTJ59ZAeIUu8dO4QwOghVJmkJJKSLTt11EUP4OAfio+faPnFVBVVBV5YFXhhVeCFVYEXlgJ+M+3ru3mjaK/GjN3Z9Hd6nBXmH7uRrvfQaPrD2jXxXedfx76+lK5nW+OUZcWAk9nmRtfGDM1kNL8IKmzWUxtbI2j+bAa6BME92d9ucmtvAn6/mGMi4f8nPFbWUwq4FQ5QfH9Wlkm7tpftE04T+qcJKAB8ZjCEZoCP3WkVFNSWo8xqO3BnCI+F6fyWio8MnBi+SQ74jZ2l3ETYkFCLnvvPUtfGHPyfBH8Qh4vFklAKOGyUzVED5XuggNruXR+hB+mB1fDA2X8k4U/9NK1Y4/GOxRMMhhXwkOeKT8bcMwxcg5mjNaAhbzTk+E1YM0mihxDRtKqNgV5UbZ6T9OZ69zXJG22aHtwYOInvZEiKTaSAi8ZE4Vy+q8unE3O2A5+Z8GRuaiq11+l6oW7kS/kmiTO856BAmLS061ngonAu/4nAJyWOFahP66Um2HuF3J2Bt75Y0KIJq3UT7ozk8ssCl73lelU+tB4CPpkR0HVR+vQcIP+Zunu0hgeo3o/WWw/c57ANHLp4QEBJ4OTNhoMga5FX3z9eQ93rBevB18DXte809P4jwOFI4RBtcDggWJieW3O9AsYbk/nxfWyAwq41AAB3b2ostVYMLoigsRwZ6ssQvZ5M27j6CNX7Y/0JzzbAA2cCNeYYLPw0q54jAP799cN2qMbe8fkRvpA64YVVgRdWBV5UxvwCSjIq+e+996sAAAAASUVORK5CYII=" InformativeScreenshot="56a77e9a46512ac227f8492416db7efd.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='https://botsdna.com/BatchProcess/' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
               </uix:NClick.Target>
             </uix:NClick>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_BatchInfo]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="507,3463" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_BatchInfo]" DisplayName="For Each Row in Data Table: dt_BatchInfo" sap:VirtualizedContainerService.HintSize="588,3350" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="473,3337" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="554,3233" sap2010:WorkflowViewState.IdRef="Sequence_1">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="BatchCode" />
                       <Variable x:TypeArguments="x:String" Name="MaxVersion" />
@@ -227,7 +174,7 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,327" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                    <ui:MultipleAssign DisplayName="Multiple Assign: 1" sap:VirtualizedContainerService.HintSize="512,318" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                       <ui:MultipleAssign.AssignOperations>
                         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -275,7 +222,7 @@
                               <OutArgument x:TypeArguments="x:String">[Day]</OutArgument>
                             </ui:AssignOperation.To>
                             <ui:AssignOperation.Value>
-                              <InArgument x:TypeArguments="x:String">[BatchRunDate.Substring(3, 2)]</InArgument>
+                              <InArgument x:TypeArguments="x:String">[BatchRunDate.Substring(4, 2)]</InArgument>
                             </ui:AssignOperation.Value>
                           </ui:AssignOperation>
                           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
@@ -283,7 +230,7 @@
                               <OutArgument x:TypeArguments="x:String">[Month]</OutArgument>
                             </ui:AssignOperation.To>
                             <ui:AssignOperation.Value>
-                              <InArgument x:TypeArguments="x:String">[BatchRunDate.Substring(5, 2)]</InArgument>
+                              <InArgument x:TypeArguments="x:String">[BatchRunDate.Substring(6, 2)]</InArgument>
                             </ui:AssignOperation.Value>
                           </ui:AssignOperation>
                           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
@@ -303,7 +250,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:MultipleAssign>
-                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into: Batch Code" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="431,227" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Text="[BatchCode]" Version="V1">
+                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into: Batch Code" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="512,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Text="[BatchCode]" Version="V1">
                       <uix:NTypeInto.Target>
                         <uix:TargetAnchorable BrowserURL="https://botsdna.com/BatchProcess/SubmitBatch.html" DesignTimeRectangle="694, 275, 177, 21" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='text' tag='INPUT' class='' aaname='' /&gt;" Guid="7f7d0cff-122d-4710-b7c3-b5d626de920a" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAALUAAAAZCAYAAAB3jW88AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACBSURBVHhe7dKxDYNAAARBCqKeL4X4O8eCwALLDfxqRrro0t32fT/NSrujhpJX1MdxmC25p2/Uvwes5NmvqEkQNTmiJkfU5IiaHFGTI2pyRE2OqMkRNTmiJkfU5IiaHFGTI2pyRE2OqMkRNTl/o75ch9mKe3pFDQXbGOOcc5pFNs8PI6D71vvzr2cAAAAASUVORK5CYII=" InformativeScreenshot="c4f685f5927a1dde923dd22265446237.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='https://botsdna.com/BatchProcess/SubmitBatch.html' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive">
                           <uix:TargetAnchorable.Anchors>
@@ -314,7 +261,7 @@
                         </uix:TargetAnchorable>
                       </uix:NTypeInto.Target>
                     </uix:NTypeInto>
-                    <uix:NSelectItem DisplayName="Select Item: Max Version" sap:VirtualizedContainerService.HintSize="431,166" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="[MaxVersion]" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V1">
+                    <uix:NSelectItem DisplayName="Select Item: Max Version" sap:VirtualizedContainerService.HintSize="512,157" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="[MaxVersion]" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V1">
                       <uix:NSelectItem.Items>
                         <scg:List x:TypeArguments="x:String" Capacity="15">
                           <x:String>01</x:String>
@@ -344,7 +291,7 @@
                         </uix:TargetAnchorable>
                       </uix:NSelectItem.Target>
                     </uix:NSelectItem>
-                    <uix:NSelectItem DisplayName="Select Item: Min Version" sap:VirtualizedContainerService.HintSize="431,166" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="[MinVersion]" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V1">
+                    <uix:NSelectItem DisplayName="Select Item: Min Version" sap:VirtualizedContainerService.HintSize="512,157" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="[MinVersion]" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V1">
                       <uix:NSelectItem.Items>
                         <scg:List x:TypeArguments="x:String" Capacity="15">
                           <x:String>1</x:String>
@@ -374,14 +321,14 @@
                         </uix:TargetAnchorable>
                       </uix:NSelectItem.Target>
                     </uix:NSelectItem>
-                    <Sequence DisplayName="Sequence: Date Selection" sap:VirtualizedContainerService.HintSize="431,885" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <Sequence DisplayName="Sequence: Date Selection" sap:VirtualizedContainerService.HintSize="512,849" sap2010:WorkflowViewState.IdRef="Sequence_4">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into: Month" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,227" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="HardwareEvents" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Text="[Month]" Version="V1">
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into: Month" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,218" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="HardwareEvents" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Text="[Month]" Version="V1">
                         <uix:NTypeInto.Target>
                           <uix:TargetAnchorable DesignTimeRectangle="696, 364, 18, 18" FriendlyName="'0'" FullSelectorArgument="&lt;ctrl idx='4' role='row' /&gt;&lt;ctrl name='Month' role='spin box' /&gt;" FuzzySelectorArgument="&lt;ctrl role='row' /&gt;&lt;ctrl name='Month' role='spin box' automationid='' /&gt;" Guid="936248bd-4bd6-4a30-80ac-ba4c6949d390" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACtSURBVEhLY/gPBGVlZVTHDCCCFgDFYIaK6xRhZDBqMByMGgwHaAa//3/t/8//e+/+AfOvnQHxQeDn/zlAjcVA8fd3v0LEvn/9Pweq7v3dl8QYDASv3oMN+f//z/+9W0BiIBpiMEIMSR2QJsJgJEPAGogVQzb4GI0MPt5CC4Of/18aGkQDg0GuDV2KbjD2ZEQshriW4X/LcaBZ1DUYAYa4wdQEtKvzwMZTHfz/DwCS47jomZXBJwAAAABJRU5ErkJggg==" InformativeScreenshot="efe5a8f8ebd89216e549489a6c610537.png" ScopeSelectorArgument="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='https://botsdna.com/BatchProcess/SubmitBatch.html - Personal - M*' /&gt;" SearchSteps="FuzzySelector" SelectionStrategy="AA" Visibility="Interactive">
                             <uix:TargetAnchorable.Anchors>
@@ -392,7 +339,7 @@
                           </uix:TargetAnchorable>
                         </uix:NTypeInto.Target>
                       </uix:NTypeInto>
-                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into: Day" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,227" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="HardwareEvents" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Text="[Day]" Version="V1">
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into: Day" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,218" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="HardwareEvents" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Text="[Day]" Version="V1">
                         <uix:NTypeInto.Target>
                           <uix:TargetAnchorable DesignTimeRectangle="720, 354, 18, 18" FriendlyName="'0'" FullSelectorArgument="&lt;ctrl idx='4' role='row' /&gt;&lt;ctrl name='Day' role='spin box' /&gt;" FuzzySelectorArgument="&lt;ctrl role='row' /&gt;&lt;ctrl name='Day' role='spin box' automationid='' /&gt;" Guid="c5102861-1d4b-4558-9f0d-37e3c2ccfc3e" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC/SURBVEhL7ZXRDYQgDIY7I4mrMIBhFRwFBvGBMf67Sg/KHfpAjgcTv4RgET9baiJZazFjECbxiAvzxH4huChRj93DkEOQsCXAkYHfJVSQWTySBF2GxduldlzcfeCQEagMLWaZvncilrlySNXmJuMsrT25yFjmQtoMaFV1aHF0oKYnZ+IwScz75LLCi1+ll7g5pgT+VH/PmNffyUnUEFbdGJZ/XiQVSeNczJJGLFV1xePkKri5fxZXHnHhbv884AW4ucL8pETACQAAAABJRU5ErkJggg==" InformativeScreenshot="95dc53aaa9048dd805893aabd644ac18.png" ScopeSelectorArgument="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='https://botsdna.com/BatchProcess/SubmitBatch.html - Personal - M*' /&gt;" SearchSteps="FuzzySelector" SelectionStrategy="AA" Visibility="Interactive">
                             <uix:TargetAnchorable.Anchors>
@@ -403,7 +350,7 @@
                           </uix:TargetAnchorable>
                         </uix:NTypeInto.Target>
                       </uix:NTypeInto>
-                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into: Year" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,227" sap2010:WorkflowViewState.IdRef="NTypeInto_4" InteractionMode="HardwareEvents" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Text="[Year]" Version="V1">
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into: Year" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,218" sap2010:WorkflowViewState.IdRef="NTypeInto_4" InteractionMode="HardwareEvents" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Text="[Year]" Version="V1">
                         <uix:NTypeInto.Target>
                           <uix:TargetAnchorable DesignTimeRectangle="744, 354, 32, 18" FriendlyName="'0'" FullSelectorArgument="&lt;ctrl idx='4' role='row' /&gt;&lt;ctrl name='Year' role='spin box' /&gt;" FuzzySelectorArgument="&lt;ctrl role='row' /&gt;&lt;ctrl name='Year' role='spin box' automationid='' /&gt;" Guid="bf9d1a85-0f47-46c6-ab51-98d5f230848a" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACQAAAAWCAYAAACosj4+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEjSURBVEhL7ZbdDYMwDIQ9Y6SuwgAoq9BR6CB9YAzXlx9qqG0emwc+CSmQ6O7iGARN08QjXcSDcQe64g50BS0P4vxqdwNA6bHw1m5GgNJzpDgSaG2DzjoT06yfrpypHuv2TEyHim6MIy+bei+cKPHyblOCXh/pan6bughnWd54ZRUCIsr0tBam34rXsLthqPvFfMsg3IX0GGDX3VSPCzDtJnrciHQ79mu/p0dF1K7AvlNU4HhEuio/YUGk23C+Q9Usz4aoUHY3i/ihJxowlTnbMNYF7oexNOSpSXdgajRkpTarGVYIdYU4kNF0hRLILnkPZIe90BWcQJFo7ROv5LFhHBacAlUzHIfXO5hzewdzbu/4uhr3yP7FeIGs/9p/XoNViPkD75sq1JLcY5MAAAAASUVORK5CYII=" InformativeScreenshot="505012ea118b2efb873d23416e7bfa66.png" ScopeSelectorArgument="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='https://botsdna.com/BatchProcess/SubmitBatch.html - Personal - M*' /&gt;" SearchSteps="FuzzySelector" SelectionStrategy="AA" Visibility="Interactive">
                             <uix:TargetAnchorable.Anchors>
@@ -415,7 +362,7 @@
                         </uix:NTypeInto.Target>
                       </uix:NTypeInto>
                     </Sequence>
-                    <If Condition="[OrderType.Contains(&quot;P&quot;)]" sap:VirtualizedContainerService.HintSize="431,363" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If Condition="[OrderType.Contains(&quot;P&quot;)]" DisplayName="If: OrderType has  P" sap:VirtualizedContainerService.HintSize="512,376" sap2010:WorkflowViewState.IdRef="If_1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -423,7 +370,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
-                        <Assign DisplayName="Assign: radioID" sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_1">
+                        <Assign DisplayName="Assign: radioID" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[radioID]</OutArgument>
                           </Assign.To>
@@ -433,7 +380,7 @@
                         </Assign>
                       </If.Then>
                       <If.Else>
-                        <Assign DisplayName="Assign: radioID" sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_2">
+                        <Assign DisplayName="Assign: radioID" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[radioID]</OutArgument>
                           </Assign.To>
@@ -443,7 +390,7 @@
                         </Assign>
                       </If.Else>
                     </If>
-                    <uix:NClick ClickType="Single" DisplayName="Click: Dubnium or Potassium" sap:VirtualizedContainerService.HintSize="431,166" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V1">
+                    <uix:NClick ClickType="Single" DisplayName="Click: Dubnium or Potassium" sap:VirtualizedContainerService.HintSize="512,157" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V1">
                       <uix:NClick.Target>
                         <uix:TargetAnchorable BrowserURL="https://botsdna.com/BatchProcess/SubmitBatch.html" DesignTimeRectangle="792, 382, 13, 13" ElementType="RadioButton" FriendlyName="'INPUT'" FullSelectorArgument="[String.Format(&quot;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='INPUT' type='radio' idx='{0}' /&gt;&quot;, radioID)]" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='INPUT' type='radio' class='' aaname='' /&gt;" Guid="6c85e587-acce-458b-b93d-36f66bb7a2c1" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACjSURBVDhPtZPBDcMgDEU7NXcGYArEkUVYgDmY4FcvqlFKIjVN3XexbL4+tkkecuB/Jr135ZwVY1QIYYvk1M84mNRalVJSa01jjK1GJKfO+cqbCYJSyis7h/PVaJrQKjddAd1+tGnCzLR8BXTojWnC8mwHn0CH3pgmvMI37PW+nbjsxOV14OfvxEDATbRsOyKSU18N4GACtMrMLO/Wv3MHBxPpCUNxRD3Cz+0BAAAAAElFTkSuQmCC" InformativeScreenshot="b3a9d1ed52b92ec60156e2ad840936d9.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='https://botsdna.com/BatchProcess/SubmitBatch.html' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
                       </uix:NClick.Target>
@@ -454,7 +401,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </uix:NClick>
-                    <uix:NClick ClickType="Single" DisplayName="Click: Submit" sap:VirtualizedContainerService.HintSize="431,166" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V1">
+                    <uix:NClick ClickType="Single" DisplayName="Click: Submit" sap:VirtualizedContainerService.HintSize="512,157" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V1">
                       <uix:NClick.Target>
                         <uix:TargetAnchorable BrowserURL="https://botsdna.com/BatchProcess/SubmitBatch.html" DesignTimeRectangle="691, 430, 58, 21" ElementType="Button" FriendlyName="'Submit'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='button' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='button' class='' aaname='Submit' check:text='Submit' /&gt;" Guid="1bab2802-04ac-4411-9bbb-b7033dc67756" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAD4AAAAZCAYAAABpaJ3KAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFbSURBVFhH7ZhNjoMwDIVzwUg9DYuKa7AKJ6HiGF1wApYcwRPnr68h0FKmI4bE0pMINok/x8kCQZlaAR/HkZqmoaqqTifmYj60AM7Ovu9pmqbTibmYDy2Ac2VSH51FzIdWwAv4qjqqhSARJEndU3EJ3RXJLfEr6q567WuX9C1pB7iFlu3weLcF5kvgQytJXBQNUUysz8EXEucknoqxpF8ER30fPLXjsW61bv+aOj9GWP/ccow9KjiX3UVF6mJ9dh48Wo95w46b9Zz/BfwOcC1cSKu+pfxr4JCgG/s5DEzoiMEVwM/1XPS/bfVINlFMVusNcCwWAuDzfGwLcQhwL5OEX/idVvdF0jJJHx0ck5y9/xAcAQ4L7lsVL6TZhedifDubpKJWDzBR7HHBjfCWtYovOJOU88lW6fhox1dv9e3goaDYaQntBP+/KuDOCni24Nn+gcn2n1tulik40Q/QLyY0fE/3sAAAAABJRU5ErkJggg==" InformativeScreenshot="69a1c3e8013956b5d04de743d5a562db.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='https://botsdna.com/BatchProcess/SubmitBatch.html' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
                       </uix:NClick.Target>
@@ -465,7 +412,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </uix:NClick>
-                    <uix:NGetText DisplayName="Get Text: Transaction Number" sap:VirtualizedContainerService.HintSize="431,166" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V1">
+                    <uix:NGetText DisplayName="Get Text: Transaction Number" sap:VirtualizedContainerService.HintSize="512,157" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="64135a58-55e1-4c80-b72c-c89f15aa53fb" Version="V1">
                       <uix:NGetText.Target>
                         <uix:TargetAnchorable BrowserURL="https://botsdna.com/BatchProcess/Thanks.html" DesignTimeRectangle="16, 553, 1407, 37" ElementType="Text" FriendlyName="'78846233'" FullSelectorArgument="&lt;webctrl tag='P' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='P' type='' class='' /&gt;" Guid="93cab051-b5e5-4fb5-84a5-c44858f0133c" ImageBase64="" InformativeScreenshot="cce8e5f7d29943c609899bb71386c5c5.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='https://botsdna.com/BatchProcess/Thanks.html' /&gt;" SearchSteps="Selector, FuzzySelector" Visibility="Interactive" />
                       </uix:NGetText.Target>
@@ -473,7 +420,7 @@
                         <OutArgument x:TypeArguments="x:String">[TransactionNum]</OutArgument>
                       </uix:NGetText.Text>
                     </uix:NGetText>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SendEmail workflow" sap:VirtualizedContainerService.HintSize="431,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SendEmail.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SendEmail workflow" sap:VirtualizedContainerService.HintSize="512,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SendEmail.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="in_BatchCode">[BatchCode.Trim]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="in_MaxVersion">[MaxVersion.Trim]</InArgument>
@@ -483,7 +430,7 @@
                         <InArgument x:TypeArguments="x:String" x:Key="in_TransactionNum">[TransactionNum.Trim]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
-                    <uix:NNavigateBrowser DisplayName="Navigate Browser - Go Back" sap:VirtualizedContainerService.HintSize="431,91" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_1" Version="V1">
+                    <uix:NNavigateBrowser DisplayName="Navigate Browser - Go Back" sap:VirtualizedContainerService.HintSize="512,82" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_1" Version="V1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
